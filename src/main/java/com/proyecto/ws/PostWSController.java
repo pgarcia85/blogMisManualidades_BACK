@@ -104,7 +104,6 @@ public class PostWSController {
 			postVO.setTitulo(updateRequest.getTitulo());
 			postVO.setResumen(updateRequest.getResumen());
 			postVO.setTexto(updateRequest.getTexto());
-			postVO.setImagen(updateRequest.getImagen());
 
 			postService.save(postVO);
 		} catch (Exception e) {
