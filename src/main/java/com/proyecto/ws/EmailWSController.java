@@ -23,7 +23,7 @@ public class EmailWSController {
 			 @RequestBody EmailRequest emailRequest) {
 		try {
 			String mensaje= emailRequest.getTexto() +"\n\n Datos de contacto: "+"\n Nombre: "+ emailRequest.getNombre() +"\n Email: " + emailRequest.getEmail();
-			emailService.enviarEmail(emailRequest.getEmail(), "paulagarciasuarezvilloria@gmail.com", emailRequest.getAsunto(), mensaje);
+			emailService.enviarEmail(emailRequest.getEmail(), "blogmismanitas@gmail.com", emailRequest.getAsunto(), mensaje);
 		} catch (Exception e) {
 			return ResponseEntity
 					.badRequest()
