@@ -66,8 +66,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/wslistaPost/**").permitAll()
 		.antMatchers("/wsPostId/**").permitAll()
 		.antMatchers("/wsComentariosPost/**").permitAll()
-		.antMatchers("/wsEliminarComentario/**").permitAll()
-		.antMatchers("/wsEliminarPost/**").permitAll()
 		.antMatchers("/wsEnviarEmail/**").permitAll()
 		.anyRequest().authenticated();
 		

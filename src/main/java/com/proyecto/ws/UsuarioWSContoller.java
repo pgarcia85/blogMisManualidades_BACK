@@ -1,11 +1,15 @@
 package com.proyecto.ws;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.proyecto.model.PostDTO;
 import com.proyecto.model.UsuarioDTO;
 import com.proyecto.model.UsuarioVO;
 import com.proyecto.request.UpdateUsuarioRequest;
@@ -65,7 +70,7 @@ public class UsuarioWSContoller {
 		return ResponseEntity.ok(new MessageResponse("El usuario se ha modificado correctamente"));
 	}
 	
-	@PostMapping("/wsEliminarUsuario/{idusuario}")
+	@DeleteMapping("/wsEliminarUsuario/{idusuario}")
 	public ResponseEntity<?> eliminarUsuario(@PathVariable("idusuario") Long idusuario) {
 		try {
 			 usuarioService.deleteById(idusuario);
@@ -79,6 +84,20 @@ public class UsuarioWSContoller {
 
 		return ResponseEntity.ok(new MessageResponse("El usuario se ha eliminado correctamente"));
 	
+	}
+	
+	@GetMapping("/wsUsuarios")
+	public List<UsuarioDTO> getUsuarios() {
+
+		List<UsuarioDTO> usuarios = new ArrayList<>();
+		for (UsuarioVO usu : usuarioService.findByRolesRolIdrol(2L)) {
+			usuarios.add(new UsuarioDTO(usu.getIdusuario(), usu.getNombre(),
+					usu.getApellidos(), usu.getEmail(), usu.getTelefono(), usu
+							.getDireccion(), usu.getContrasena()));
+		}
+
+		return usuarios;
+
 	}
 
 }

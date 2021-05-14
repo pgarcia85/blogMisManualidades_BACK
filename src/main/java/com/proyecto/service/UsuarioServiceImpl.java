@@ -53,6 +53,16 @@ public class UsuarioServiceImpl implements UsuarioService{
 		usuarioRepository.deleteById(arg0);
 	}
 
+	@Override
+	public Iterable<UsuarioVO> findAll() {
+		return usuarioRepository.findAll();
+	}
+
+	@Override
+	public Iterable<UsuarioVO> findByRolesRolIdrol(Long idRol) {
+		return usuarioRepository.findByRolesRolIdrol(idRol);
+	}
+
 
 
 }

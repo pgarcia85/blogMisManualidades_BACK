@@ -16,4 +16,6 @@ public interface UsuarioRepository extends CrudRepository<UsuarioVO, Long>{
 	
 	Boolean existsByContrasena(String contrasena);
 	
+	Iterable <UsuarioVO> findByRolesRolIdrol(Long idRol);
+	
 }
