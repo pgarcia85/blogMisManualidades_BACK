@@ -18,7 +18,7 @@ public class ComentarioServiceImpl implements ComentarioService{
 
 	@Override
 	public List<ComentarioVO> findByIdpost(int idpost) {
-		List<ComentarioVO> listaComentarios = comentarioRepo.findByPostIdpostOrderByFechacreacionDesc(idpost);
+		List<ComentarioVO> listaComentarios = comentarioRepo.findByPostIdpostOrderByFechacreacionAsc(idpost);
 		return listaComentarios;
 	}
 

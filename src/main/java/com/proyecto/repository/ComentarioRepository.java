@@ -10,7 +10,7 @@ import com.proyecto.model.ComentarioVO;
 @Repository
 public interface ComentarioRepository extends CrudRepository<ComentarioVO, Integer>{
 	
-	List<ComentarioVO> findByPostIdpostOrderByFechacreacionDesc(int idpost);
+	List<ComentarioVO> findByPostIdpostOrderByFechacreacionAsc(int idpost);
 	
 	ComentarioVO findByIdcomentario(int idcomentario);
 
