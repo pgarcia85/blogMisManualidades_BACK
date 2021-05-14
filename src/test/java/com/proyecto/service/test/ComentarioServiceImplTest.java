@@ -1,80 +1,77 @@
-package com.proyecto;
+package com.proyecto.service.test;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.proyecto.model.ComentarioVO;
-import com.proyecto.model.PostVO;
-import com.proyecto.model.UsuarioVO;
 import com.proyecto.repository.ComentarioRepository;
-import com.proyecto.repository.PostRepository;
-import com.proyecto.repository.UsuarioRepository;
-import com.proyecto.service.PostService;
+import com.proyecto.service.ComentarioServiceImpl;
+
 
 @SpringBootTest
 public class ComentarioServiceImplTest {
 	
-	@Autowired
-	 static ComentarioRepository comentarioRepo;
-	
-	@Autowired
-	 static PostService postService;
-	
-	@Autowired
-	static UsuarioRepository usuarioRepository;
+	@InjectMocks
+	ComentarioServiceImpl comentarioService;
+	 
+	@Mock
+	ComentarioRepository comentarioRepo;
 	
 
-    private static ComentarioVO comentario ;
 	
-	@BeforeAll
-	public static void init(){
-		ComentarioVO comentario = new ComentarioVO();
-		comentario.setFechacreacion(LocalDate.now());
-		comentario.setTextocomentario("Prueba Test");
-		
-		UsuarioVO usuario = new UsuarioVO();
-		usuario.setNombre("nombre");
-		usuario.setApellidos("apellido");
-		usuario.setDireccion("Direccion");
-		usuario.setEmail("Email");
-		usuario.setContrasena("contraseña");
-		usuario.setTelefono(663785426);
-		
-		comentario.setUsuarioComen(usuario);
-		
-		PostVO post = postService.findById(1).get();
-		comentario.setPost(post);	
-		
-	}
+	@Before
+	public void inicio() {
+	   MockitoAnnotations.initMocks(this);   
+	 }
+
 		
 	
 	@Test
 	void findByIdpostTest() {
-		List<ComentarioVO> listaComentarios = comentarioRepo.findByPostIdpostOrderByFechacreacionAsc(1);
-		Assertions.assertEquals(2, listaComentarios.size());
+		List<ComentarioVO> listaComentarios = new ArrayList<ComentarioVO>();
+		listaComentarios.add(new ComentarioVO());
+		listaComentarios.add(new ComentarioVO());
+		Mockito.when(comentarioRepo.findByPostIdpostOrderByFechacreacionAsc(Mockito.anyInt())).thenReturn(listaComentarios);
+		
+		Assertions.assertEquals(2, comentarioService.findByIdpost(1).size());
 	}
 	
 	@Test
 	void saveComentarioTest() {
+		ComentarioVO comenta = Mockito.mock(ComentarioVO.class, Mockito.RETURNS_DEEP_STUBS);
+		Mockito.when(comenta.getTextocomentario()).thenReturn("Texto test");
 		
-		ComentarioVO comenta = comentarioRepo.save(comentario);
-		Assertions.assertEquals("Prueba Test", comenta.getTextocomentario());
+		Mockito.when(comentarioRepo.save(Mockito.any())).thenReturn(comenta);
+		
+		Assertions.assertEquals("Texto test", comentarioService.save(new ComentarioVO()).getTextocomentario());
 	}
 
 	@Test
 	void deleteComentarioTest() {
 		
-		comentarioRepo.deleteById(comentario.getIdcomentario());
+		comentarioService.deleteById(1);
 		
 	}
 
+	@Test
+	void findByIdTest(){
+		ComentarioVO comenta = Mockito.mock(ComentarioVO.class, Mockito.RETURNS_DEEP_STUBS);
+		Mockito.when(comenta.getTextocomentario()).thenReturn("Texto test");
+		Optional<ComentarioVO> listaComentarios = Optional.of(comenta);
+		
+		Mockito.when(comentarioRepo.findById(Mockito.any())).thenReturn(listaComentarios);
+		Assertions.assertEquals("Texto test", comentarioService.findById(1).get().getTextocomentario());
+	}
 	
 	
 
