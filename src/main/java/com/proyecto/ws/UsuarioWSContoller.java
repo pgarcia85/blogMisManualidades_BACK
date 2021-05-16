@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.proyecto.model.PostDTO;
 import com.proyecto.model.UsuarioDTO;
 import com.proyecto.model.UsuarioVO;
 import com.proyecto.request.UpdateUsuarioRequest;
@@ -31,6 +30,12 @@ public class UsuarioWSContoller {
 	@Autowired
 	private UsuarioService usuarioService;
 
+	/**
+	 * Controlador Rest para obtener los datos de un usuario
+	 * 
+	 * @param idusuario
+	 * @return
+	 */
 	@GetMapping("/wsUsuarioId/{idusuario}")
 	public UsuarioDTO getDatosUsuario(@PathVariable("idusuario") Long idusuario) {
 
@@ -45,6 +50,12 @@ public class UsuarioWSContoller {
 		return usuario;
 	}
 
+	/**
+	 * Controlador Rest para actualizar un usuario
+	 * 
+	 * @param updateRequest
+	 * @return
+	 */
 	@PostMapping("/wsUsuarioUpdate")
 	public ResponseEntity<?> updateUsuario(
 			@Valid @RequestBody UpdateUsuarioRequest updateRequest) {
@@ -70,6 +81,12 @@ public class UsuarioWSContoller {
 		return ResponseEntity.ok(new MessageResponse("El usuario se ha modificado correctamente"));
 	}
 	
+	/**
+	 * Controlador Rest para eliminar un usuario
+	 * 
+	 * @param idusuario
+	 * @return
+	 */
 	@DeleteMapping("/wsEliminarUsuario/{idusuario}")
 	public ResponseEntity<?> eliminarUsuario(@PathVariable("idusuario") Long idusuario) {
 		try {
@@ -86,6 +103,11 @@ public class UsuarioWSContoller {
 	
 	}
 	
+	/**
+	 * Controlador Rest para obtener todos los usuarios
+	 * 
+	 * @return
+	 */
 	@GetMapping("/wsUsuarios")
 	public List<UsuarioDTO> getUsuarios() {
 

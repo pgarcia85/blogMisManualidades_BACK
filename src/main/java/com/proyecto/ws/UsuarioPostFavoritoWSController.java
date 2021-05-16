@@ -41,7 +41,12 @@ public class UsuarioPostFavoritoWSController {
 	private PostService postService;
 	
 	
-	
+	/**
+	 * Controlador Rest para guardar un post favorito a un usuario
+	 * 
+	 * @param postFavorio
+	 * @return
+	 */
 	@PostMapping("/wsUsuarioGuardarPostFavorito")
 	public ResponseEntity<?> guardarPostFavorito(
 			@Valid @RequestBody UsuarioPostFavoritoDTO postFavorio) {
@@ -67,6 +72,12 @@ public class UsuarioPostFavoritoWSController {
 		return ResponseEntity.ok(new MessageResponse("El post se ha añadido a la lista de favoritos"));
 	}
 	
+	/**
+	 * Controlador Rest para obtener la lista de post favoritos de un usuario
+	 * 
+	 * @param idusuario
+	 * @return
+	 */
 	@GetMapping("/wsPostFavoritos/{idusuario}")
 	public List<PostDTO> getListaPostFavoritosUsuario(@PathVariable("idusuario") Long idusuario){
 		List<PostDTO> posts = new ArrayList<>();
@@ -76,6 +87,12 @@ public class UsuarioPostFavoritoWSController {
 		return  posts;
 	}
 	
+	/**
+	 * Controlador Rest para eliminar un post de los favoritos de un usuario
+	 * 
+	 * @param postFavorio
+	 * @return
+	 */
 	@DeleteMapping("/wsPostFavoritosEliminar")
 	public ResponseEntity<?> deletePostFavorito(@Valid @RequestBody UsuarioPostFavoritoDTO postFavorio){
 		try {

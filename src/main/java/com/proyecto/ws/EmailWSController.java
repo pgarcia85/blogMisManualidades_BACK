@@ -18,6 +18,12 @@ public class EmailWSController {
 	@Autowired
 	private EmailService emailService;
 	
+	/**
+	 * Controlador Rest para enviar un email
+	 * 
+	 * @param emailRequest
+	 * @return
+	 */
 	@PostMapping("/wsEnviarEmail")
 	public ResponseEntity<?> enviarEmail(
 			 @RequestBody EmailRequest emailRequest) {

@@ -17,7 +17,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
-	
+
 	@Override
 	@Transactional
 	public UserDetails loadUsuarioByEmail(String email) {

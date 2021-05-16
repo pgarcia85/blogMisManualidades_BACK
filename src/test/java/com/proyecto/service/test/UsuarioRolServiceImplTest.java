@@ -13,12 +13,8 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.proyecto.model.PostVO;
-import com.proyecto.model.UsuarioPostFavoritoVO;
 import com.proyecto.model.UsuarioRolVO;
-import com.proyecto.repository.UsuarioPostRepository;
 import com.proyecto.repository.UsuarioRolRepository;
-import com.proyecto.service.UsuarioPostFavoritoServiceImpl;
 import com.proyecto.service.UsuarioRolServiceImpl;
 
 @SpringBootTest
