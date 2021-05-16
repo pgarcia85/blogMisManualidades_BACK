@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.proyecto.model.ComentarioDTO;
-import com.proyecto.model.ComentarioVO;
 import com.proyecto.model.PostDTO;
 import com.proyecto.model.PostVO;
 import com.proyecto.request.UpdatePostRequest;
@@ -42,6 +40,12 @@ public class PostWSController {
 		return posts;
 	}
 
+	/**
+	 * Controlador Rest para obtener un post por su identificador
+	 * 
+	 * @param idpost
+	 * @return
+	 */
 	@GetMapping("/wsPostId/{idpost}")
 	public PostDTO getPost(@PathVariable("idpost") Integer idpost) {
 		PostVO postlVO = postService.findById(idpost).orElseThrow(
@@ -53,6 +57,12 @@ public class PostWSController {
 		return post;
 	}
 
+	/**
+	 * Controlador Rest para insertar un Post
+	 * 
+	 * @param post
+	 * @return
+	 */
 	@PostMapping("/wsInsertaPost")
 	public ResponseEntity<?> insertaPost(@RequestBody PostDTO post) {
 		try {
@@ -70,6 +80,12 @@ public class PostWSController {
 				"El post se ha sido guardado correctamente"));
 	}
 
+	/**
+	 * Controlador Rest para eliminar un post
+	 * 
+	 * @param idpost
+	 * @return
+	 */
 	@DeleteMapping("/wsEliminarPost/{idpost}")
 	public ResponseEntity<?> eliminaPost(@PathVariable("idpost") Integer idpost) {
 		try {

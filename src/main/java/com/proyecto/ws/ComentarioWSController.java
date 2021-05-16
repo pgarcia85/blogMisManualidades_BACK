@@ -43,6 +43,12 @@ public class ComentarioWSController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
+	/**
+	 * Controlador Rest para obtener todos los comentarios de un post
+	 * 
+	 * @param idpost
+	 * @return lista de comentarios
+	 */
 	@GetMapping("/wsComentariosPost/{idpost}")
 	public List<ComentarioDTO> getComentariosPost(@PathVariable("idpost") Integer idpost){
 		List<ComentarioDTO> listaComentarios = new ArrayList<>();
@@ -54,6 +60,12 @@ public class ComentarioWSController {
 		return  listaComentarios;
 	}
 	
+	/**
+	 * Controlador Rest para obtener un comentario a partir de su id
+	 * 
+	 * @param idcomentario
+	 * @return comentario
+	 */
 	@GetMapping("/wsComentario/{idcomentario}")
 	public ComentarioDTO getComentario(@PathVariable("idcomentario") Integer idcomentario){
 		
@@ -63,6 +75,12 @@ public class ComentarioWSController {
 		return  comen;
 	}
 	
+	/**
+	 * Controlador Rest para insertar un comentario
+	 * 
+	 * @param comentario
+	 * @return comentario guardado
+	 */
 	@PostMapping("/wsInsertaComentario")
 	public ComentarioDTO insertaComentario(@RequestBody ComentarioDTO comentario){
 		ComentarioVO comen = new ComentarioVO(comentario.getTexto(),  LocalDate.now(),  postService.findById(comentario.getIdPost()).get(), usuarioService.findById(comentario.getIdUsuario()).get());
@@ -71,6 +89,12 @@ public class ComentarioWSController {
 		return new ComentarioDTO(comen.getIdcomentario(), comen.getTextocomentario(), comen.getFechacreacion(), comen.getPost().getIdpost(),comen.getUsuarioComen().getNombre(),comen.getUsuarioComen().getIdusuario());
 	}
 	
+	/**
+	 * Controlador Rest para eliminar un comentario
+	 * 
+	 * @param idcomentario
+	 * @return
+	 */
 	@DeleteMapping("/wsEliminarComentario/{idcomentario}")
 	public ResponseEntity<?> eliminaComentario(@PathVariable("idcomentario") Integer idcomentario) {
 		try {

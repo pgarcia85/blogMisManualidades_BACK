@@ -57,6 +57,12 @@ public class AuthWSController {
 	@Autowired
 	private JwtUtils jwtUtils;
 
+	/**
+	 * Controlador Rest para iniciar sesion
+	 * 
+	 * @param loginRequest
+	 * @return
+	 */
 	@PostMapping("/singin")
 	public ResponseEntity<?> authenticateUser(
 			@Valid @RequestBody LoginRequest loginRequest) {
@@ -89,6 +95,12 @@ public class AuthWSController {
 
 	}
 
+	/**
+	 * Controlador Rest para registrar usuario
+	 * 
+	 * @param sigupRequest
+	 * @return
+	 */
 	@PostMapping("/singup")
 	public ResponseEntity<?> registerUser(
 			@Valid @RequestBody SigupRequest sigupRequest) {

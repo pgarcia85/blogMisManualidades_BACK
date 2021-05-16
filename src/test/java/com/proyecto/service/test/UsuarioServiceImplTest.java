@@ -13,7 +13,6 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.proyecto.model.UsuarioRolVO;
 import com.proyecto.model.UsuarioVO;
 import com.proyecto.repository.UsuarioRepository;
 import com.proyecto.service.UsuarioServiceImpl;
