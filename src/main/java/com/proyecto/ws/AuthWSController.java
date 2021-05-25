@@ -120,8 +120,8 @@ public class AuthWSController {
 				sigupRequest.getApellidos(), sigupRequest.getEmail(),
 				sigupRequest.getTelefono(), sigupRequest.getDireccion(),
 				encoder.encode(sigupRequest.getContrasena()));
+		
 		usuarioService.save(usuario);
-		//List<UsuarioRolVO> roles = new ArrayList<>();
 		UsuarioRolVO usuarioRol = new UsuarioRolVO();
 		RolVO rol = rolService.findByDesrol("ROLE_REGISTRADO").orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
