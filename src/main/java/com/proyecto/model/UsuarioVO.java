@@ -30,7 +30,7 @@ public class UsuarioVO {
 	@OneToMany(mappedBy="usuarioComen",fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	List<ComentarioVO> listaComentarios;
 	
-	@OneToMany(mappedBy = "usuario",fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	private List<UsuarioRolVO> roles;
 	
 	@OneToMany(mappedBy = "usuarioFav",fetch = FetchType.LAZY, cascade = { CascadeType.ALL })

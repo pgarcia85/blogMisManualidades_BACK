@@ -70,7 +70,6 @@ public class UsuarioPostFavoritoWSControllerTest {
 	
 	@Test
 	public void deletePostFavoritoTest(){
-		UsuarioPostFavoritoDTO usuarioPostFavoritoDTO = Mockito.mock(UsuarioPostFavoritoDTO.class, Mockito.RETURNS_DEEP_STUBS);
 		
 		UsuarioVO usuario = Mockito.mock(UsuarioVO.class, Mockito.RETURNS_DEEP_STUBS);
 		Optional<UsuarioVO> listaUsu = Optional.of(usuario);
@@ -81,7 +80,7 @@ public class UsuarioPostFavoritoWSControllerTest {
 		Mockito.when(postService.findById(Mockito.anyInt())).thenReturn(listaPost);
 		
 		
-		Assertions.assertEquals(200, usuarioPostFavoritoWSController.deletePostFavorito(usuarioPostFavoritoDTO).getStatusCodeValue());
+		Assertions.assertEquals(200, usuarioPostFavoritoWSController.deletePostFavorito(1L, 20).getStatusCodeValue());
 	}
 	
 	@Test

@@ -93,16 +93,16 @@ public class UsuarioPostFavoritoWSController {
 	 * @param postFavorio
 	 * @return
 	 */
-	@DeleteMapping("/wsPostFavoritosEliminar")
-	public ResponseEntity<?> deletePostFavorito(@Valid @RequestBody UsuarioPostFavoritoDTO postFavorio){
+	@DeleteMapping("/wsPostFavoritosEliminar/{idusuario}/{idpost}")
+	public ResponseEntity<?> deletePostFavorito(@PathVariable("idusuario") Long idusuario, @PathVariable("idpost") Integer idpost){
 		try {
 			usuarioService
-					.findById(postFavorio.getIdUsuario()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+					.findById(idusuario).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 			
 			postService
-					.findById(postFavorio.getIdPost()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+					.findById(idpost).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 			
-			usuarioPostFavoritoService.deleteByUsuarioFavIdUsuarioPostFavIdpost(postFavorio.getIdUsuario(), postFavorio.getIdPost());
+			usuarioPostFavoritoService.deleteByUsuarioFavIdUsuarioPostFavIdpost(idusuario, idpost);
 		} catch (Exception e) {
 			return ResponseEntity
 					.badRequest()
