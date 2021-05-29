@@ -7,5 +7,6 @@ import com.proyecto.model.PostVO;
 
 @Repository
 public interface PostRepository extends CrudRepository<PostVO, Integer>{
+	Iterable<PostVO> findAllByOrderByFechacreacionAsc();
 
 }

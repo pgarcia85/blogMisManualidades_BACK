@@ -6,7 +6,7 @@ import com.proyecto.model.PostVO;
 
 public interface PostService {
 
-	Iterable<PostVO> findAll();
+	Iterable<PostVO> findAllOrderByFechaCreacion();
 
 	Optional<PostVO> findById(Integer arg0);
 

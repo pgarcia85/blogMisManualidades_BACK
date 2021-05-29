@@ -32,7 +32,7 @@ public class PostWSController {
 	@GetMapping("/wslistaPost")
 	public List<PostDTO> getListaPost() {
 		List<PostDTO> posts = new ArrayList<>();
-		for (PostVO postlVO : postService.findAll()) {
+		for (PostVO postlVO : postService.findAllOrderByFechaCreacion()) {
 			posts.add(new PostDTO(postlVO.getIdpost(), postlVO.getTitulo(),
 					postlVO.getResumen(), postlVO.getTexto(), postlVO
 							.getImagen(), postlVO.getFechacreacion()));
