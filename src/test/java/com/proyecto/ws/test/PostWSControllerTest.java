@@ -42,7 +42,7 @@ public class PostWSControllerTest {
 		listaPost.add(Mockito.mock(PostVO.class, Mockito.RETURNS_DEEP_STUBS));
 		listaPost.add(Mockito.mock(PostVO.class, Mockito.RETURNS_DEEP_STUBS));
 		listaPost.add(Mockito.mock(PostVO.class, Mockito.RETURNS_DEEP_STUBS));
-		Mockito.when(postService.findAll()).thenReturn(listaPost);
+		Mockito.when(postService.findAllOrderByFechaCreacion()).thenReturn(listaPost);
 			
 		
 		Assertions.assertEquals(3, postWSController.getListaPost().size());
