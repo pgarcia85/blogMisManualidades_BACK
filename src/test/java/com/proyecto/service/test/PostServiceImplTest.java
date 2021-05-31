@@ -40,7 +40,7 @@ public class PostServiceImplTest {
 		listaPost.add(new PostVO());
 		listaPost.add(new PostVO());
 		listaPost.add(new PostVO());
-		Mockito.when(postRepository.findAll()).thenReturn(listaPost);
+		Mockito.when(postRepository.findAllByOrderByFechacreacionAsc()).thenReturn(listaPost);
 		
 		List<PostVO> resultado = (List<PostVO>) postServiceImpl.findAllOrderByFechaCreacion();
 		Assertions.assertEquals(3, resultado.size());
