@@ -48,7 +48,7 @@ public class UsuarioPostFavoritoServiceImplTest {
 		List<UsuarioPostFavoritoVO> listaUsuarioPostFav = new ArrayList<>();
 		listaUsuarioPostFav.add(usuarioPostFavorito);
 		
-		Mockito.when(usuarioPostRepository.findAllByUsuarioFavIdusuario(Mockito.anyLong())).thenReturn(listaUsuarioPostFav);
+		Mockito.when(usuarioPostRepository.findAllByUsuarioFavIdusuarioOrderByPostFavFechacreacionDesc(Mockito.anyLong())).thenReturn(listaUsuarioPostFav);
 		
 		Assertions.assertEquals(1, usuarioPostFavoritoServiceImpl.findAllByUsuarioFavIdusuario(1L).get(0).getPostFav().getIdpost());
 	}
