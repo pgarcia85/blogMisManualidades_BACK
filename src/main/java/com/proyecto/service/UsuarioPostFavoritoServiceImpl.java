@@ -22,7 +22,7 @@ public class UsuarioPostFavoritoServiceImpl implements UsuarioPostFavoritoServic
 
 	@Override
 	public List<UsuarioPostFavoritoVO> findAllByUsuarioFavIdusuario(Long idUsuario) {
-		return usuarioPostRepository.findAllByUsuarioFavIdusuario(idUsuario);
+		return usuarioPostRepository.findAllByUsuarioFavIdusuarioOrderByPostFavFechacreacionDesc(idUsuario);
 	}
 
 	@Override

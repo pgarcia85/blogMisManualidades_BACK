@@ -12,12 +12,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.mail.javamail.JavaMailSender;
 
-import com.proyecto.model.ComentarioVO;
 import com.proyecto.model.PostVO;
 import com.proyecto.repository.PostRepository;
-import com.proyecto.service.EmailServiceImpl;
 import com.proyecto.service.PostServiceImpl;
 
 @SpringBootTest
@@ -40,7 +37,7 @@ public class PostServiceImplTest {
 		listaPost.add(new PostVO());
 		listaPost.add(new PostVO());
 		listaPost.add(new PostVO());
-		Mockito.when(postRepository.findAllByOrderByFechacreacionAsc()).thenReturn(listaPost);
+		Mockito.when(postRepository.findAllByOrderByFechacreacionDesc()).thenReturn(listaPost);
 		
 		List<PostVO> resultado = (List<PostVO>) postServiceImpl.findAllOrderByFechaCreacion();
 		Assertions.assertEquals(3, resultado.size());

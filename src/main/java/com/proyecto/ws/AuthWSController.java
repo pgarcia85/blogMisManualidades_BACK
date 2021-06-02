@@ -109,12 +109,6 @@ public class AuthWSController {
 					new MessageResponse("Ya existe un usuario con ese email"));
 		}
 
-		if (usuarioService.existsByContrasena(sigupRequest.getContrasena())) {
-			return ResponseEntity.badRequest().body(
-					new MessageResponse(
-							"Ya existe un usuario con esa contraseña"));
-		}
-
 		// crear una nueva cuenta de usuario
 		UsuarioVO usuario = new UsuarioVO(sigupRequest.getNombre(),
 				sigupRequest.getApellidos(), sigupRequest.getEmail(),

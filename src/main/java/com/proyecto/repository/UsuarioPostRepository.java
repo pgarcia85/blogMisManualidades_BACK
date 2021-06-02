@@ -13,9 +13,9 @@ import com.proyecto.model.UsuarioPostFavoritoVO;
 @Repository
 public interface UsuarioPostRepository extends CrudRepository<UsuarioPostFavoritoVO, Integer>{
 	
-	List<UsuarioPostFavoritoVO> findAllByUsuarioFavIdusuario(Long idUsuario);
+	List<UsuarioPostFavoritoVO> findAllByUsuarioFavIdusuarioOrderByPostFavFechacreacionDesc(Long idUsuario);
 	
-	@Transactional
+
 	long deleteByUsuarioFavIdusuarioAndPostFavIdpost(Long idUsuario, Integer idPost);
 
 }

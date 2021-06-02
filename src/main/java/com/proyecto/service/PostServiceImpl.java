@@ -16,7 +16,7 @@ public class PostServiceImpl implements PostService{
 
 	@Override
 	public Iterable<PostVO> findAllOrderByFechaCreacion() {		
-		return postRepository.findAllByOrderByFechacreacionAsc();
+		return postRepository.findAllByOrderByFechacreacionDesc();
 	}
 
 	@Override
